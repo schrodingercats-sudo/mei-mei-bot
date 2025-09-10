@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: mei-mei-bot
+    env: python
+    plan: free
+    autoDeploy: true
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MEIMEI_REPLY_ALL
+        value: "true"
+      - key: MEIMEI_MEMORY_DIR
+        value: data
+
